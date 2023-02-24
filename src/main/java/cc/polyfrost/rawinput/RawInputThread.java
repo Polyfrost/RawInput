@@ -11,6 +11,7 @@ import java.net.URI;
 
 public class RawInputThread extends Thread {
     private float dx, dy = 0f;
+    private ControllerEnvironment env = ControllerEnvironment.getDefaultEnvironment();
 
     public RawInputThread() {
         super("RawInputThread");
@@ -19,7 +20,7 @@ public class RawInputThread extends Thread {
     @Override
     public void run() {
         try {
-            ControllerEnvironment env = ControllerEnvironment.getDefaultEnvironment();
+            updateControllerEnvironment();
             while (true) {
                 boolean isGrabbed = org.lwjgl.input.Mouse.isGrabbed();
                 for (Controller controller : env.getControllers()) {
@@ -64,5 +65,9 @@ public class RawInputThread extends Thread {
 
     public void setDy(float dy) {
         this.dy = dy;
+    }
+
+    public void updateControllerEnvironment() {
+        this.env = ControllerEnvironment.getDefaultEnvironment();
     }
 }
