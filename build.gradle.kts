@@ -57,7 +57,6 @@ loom {
         launchConfigs.named("client") {
             arg("--tweakClass", "cc.polyfrost.oneconfig.loader.stage0.LaunchWrapperTweaker")
 
-            // This is enabled so OneConfig can read our Mixins and automatically apply them.
             property(
                 "mixin.debug.export",
                 "true"

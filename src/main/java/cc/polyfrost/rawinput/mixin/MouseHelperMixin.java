@@ -1,6 +1,7 @@
 package cc.polyfrost.rawinput.mixin;
 
 import cc.polyfrost.oneconfig.libs.universal.UDesktop;
+import cc.polyfrost.rawinput.RawInput;
 import cc.polyfrost.rawinput.RawInputThread;
 import cc.polyfrost.rawinput.config.RawInputConfig;
 import cc.polyfrost.rawinput.hook.MouseHelperHook;
@@ -35,7 +36,7 @@ public class MouseHelperMixin implements MouseHelperHook {
 
     @Inject(method = "mouseXYChange", at = @At("HEAD"), cancellable = true)
     private void rawInputMouseXYChange(CallbackInfo ci) {
-        if (RawInputConfig.rawInput && UDesktop.isWindows() && RawInputConfig.INSTANCE.enabled) {
+        if (RawInputConfig.rawInput && UDesktop.isWindows() && RawInput.config.enabled) {
             deltaX = (int) polyfrost$rawInput.getDx();
             deltaY = -((int) polyfrost$rawInput.getDy());
             ci.cancel();

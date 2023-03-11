@@ -17,8 +17,6 @@ public class RawInputConfig extends Config {
     @NonProfileSpecific
     public static boolean osWarned = false;
 
-    public static final RawInputConfig INSTANCE = new RawInputConfig();
-
     public RawInputConfig() {
         super(new Mod("RawInput", ModType.UTIL_QOL), "rawinput.json", true, UDesktop.isWindows());
         initialize();

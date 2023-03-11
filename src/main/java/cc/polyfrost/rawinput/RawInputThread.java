@@ -101,13 +101,13 @@ public class RawInputThread extends Thread {
     public void disableRawInput(boolean osNotSupported) {
         RawInputConfig.rawInput = false;
         if (osNotSupported) {
-            RawInputConfig.INSTANCE.enabled = false;
+            RawInput.config.enabled = false;
         }
         if (osNotSupported && !RawInputConfig.osWarned) {
             Notifications.INSTANCE.send("Raw Input", "Raw Input will not do anything as it is for Windows ONLY. Uninstall Raw Input if needed.", 10000f);
         } else {
             Notifications.INSTANCE.send("Raw Input", "Raw Input has been disabled due to an error. Please report this to Polyfrost by clicking here!", 10000f, () -> UDesktop.browse(URI.create("https://polyfrost.cc/discord/")));
         }
-        RawInputConfig.INSTANCE.save();
+        RawInput.config.save();
     }
 }
